@@ -93,6 +93,7 @@ export function buildRegistry(config: RegistryConfig): Registry {
         return {
           path: file.path,
           type: resolveFileType(file.path),
+          target: file.target,
           content,
         };
       }),
