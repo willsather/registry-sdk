@@ -11,7 +11,9 @@ export interface RegistryConfig {
 
 export interface Registry {
   config: RegistryConfig;
-  getComponent: (name: string) => RegistryItem | null;
+  getComponent: (name: string) => RegistryComponent;
+  getComponents: () => RegistryComponent[];
+  getRegistryItem: (name: string) => RegistryItem | null;
 }
 
 export interface RegistryComponent {
@@ -69,7 +71,21 @@ export function buildRegistry(config: RegistryConfig): Registry {
     config.components.map((c) => [c.name.toLowerCase(), c]),
   );
 
-  function getComponent(name: string): RegistryItem | null {
+  function getComponents(): RegistryComponent[] {
+    return config.components;
+  }
+
+  function getComponent(name: string): RegistryComponent {
+    const component = config.components.find((rc) => rc.name === name);
+
+    if (component == null) {
+      throw new Error(`Component ${name} not found`);
+    }
+
+    return component;
+  }
+
+  function getRegistryItem(name: string): RegistryItem | null {
     const component = componentMap.get(name.toLowerCase());
     if (!component) return null;
 
@@ -103,5 +119,7 @@ export function buildRegistry(config: RegistryConfig): Registry {
   return {
     config,
     getComponent,
+    getComponents,
+    getRegistryItem,
   };
 }

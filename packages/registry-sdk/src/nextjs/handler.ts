@@ -15,24 +15,24 @@ export function toNextJsHandler(registry: Registry) {
     if (root === "registry" && file?.endsWith(".json")) {
       const name = file.replace(/\.json$/, "");
 
-      const component = registry.getComponent(name);
+      const registryItem = registry.getRegistryItem(name);
 
-      if (component == null) {
+      if (registryItem == null) {
         return NextResponse.json(
           { error: "Component not found" },
           { status: 404 },
         );
       }
 
-      return NextResponse.json(component);
+      return NextResponse.json(registryItem);
     }
 
     return NextResponse.json({ error: "Not found" }, { status: 404 });
   };
 
-  const POST: NextjsRoute = async (req) => {
-    return NextResponse.json({ message: "POST handler not implemented" });
+  const generateStaticParams = () => {
+    return registry.getComponents().map((rc) => ({ name: rc.name }));
   };
 
-  return { GET, POST };
+  return { GET, generateStaticParams };
 }
