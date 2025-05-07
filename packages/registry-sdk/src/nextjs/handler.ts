@@ -13,28 +13,35 @@ export function toNextJsHandler(registry: Registry) {
     const [root, file] = path.split("/");
 
     if (root === "registry" && file?.endsWith(".json")) {
-      const name = file.replace(/\.json$/, "");
+      try {
+        const name = file.replace(/\.json$/, "");
 
-      const registryItem = registry.getRegistryItem(name);
+        const registryItem = registry.getRegistryItem(name);
 
-      if (registryItem == null) {
+        if (registryItem == null) {
+          return NextResponse.json(
+            { error: "Component not found" },
+            { status: 404 },
+          );
+        }
+
+        return NextResponse.json(registryItem);
+      } catch (error) {
         return NextResponse.json(
-          { error: "Component not found" },
-          { status: 404 },
+          { error: "Failed to get registry item" },
+          { status: 500 },
         );
       }
-
-      return NextResponse.json(registryItem);
     }
 
     return NextResponse.json({ error: "Not found" }, { status: 404 });
   };
 
   const generateStaticParams = () => {
-    return registry.getComponents().map((rc) => ({ name: rc.name }));
+    return registry
+      .getComponents()
+      .map((rc) => ({ name: [`${rc.name}.json`] }));
   };
 
-  const dynamic = "force-static" as const;
-
-  return { GET, dynamic, generateStaticParams };
+  return { GET, generateStaticParams };
 }

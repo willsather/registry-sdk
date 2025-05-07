@@ -29,7 +29,7 @@ export default async function Home() {
         </a>
 
         <a
-          href="/registry/footer.json"
+          href="/r/footer.json"
           className="rounded-2xl border-2 border-black bg-gray-100/50 p-16 px-48 hover:bg-gray-300/50 hover:underline"
         >
           <h2 className="font-mono text-lg">Try out now</h2>
