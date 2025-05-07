@@ -34,5 +34,7 @@ export function toNextJsHandler(registry: Registry) {
     return registry.getComponents().map((rc) => ({ name: rc.name }));
   };
 
-  return { GET, generateStaticParams };
+  const dynamic = "force-static" as const;
+
+  return { GET, dynamic, generateStaticParams };
 }
