@@ -10,15 +10,10 @@ export function toNextJsHandler(registry: Registry) {
     const url = req.nextUrl;
     const path = url.pathname.replace(/^\/+|\/+$/g, ""); // remove leading/trailing slashes
 
-    const segments = path.split("/");
+    const [root, file] = path.split("/");
 
-    // route: /registry/[name].json
-    if (
-      segments.length === 2 &&
-      segments[0] === "registry" &&
-      segments[1].endsWith(".json")
-    ) {
-      const name = segments[1].replace(/\.json$/, "");
+    if (root === "registry" && file?.endsWith(".json")) {
+      const name = file.replace(/\.json$/, "");
 
       const component = registry.getComponent(name);
 
