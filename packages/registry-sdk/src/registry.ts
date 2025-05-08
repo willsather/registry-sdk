@@ -18,8 +18,8 @@ export interface Registry {
 
 export interface RegistryComponent {
   name: string;
+  title: string;
 
-  title?: string;
   description?: string;
   author?: string;
 

@@ -19,6 +19,7 @@ The goal is to create an SDK that helps automate creating a component registry w
       components: [
          {
             name: "footer",
+            title: "Footer",
             description: "A footer containing base links and social media links.",
    
             demo: {

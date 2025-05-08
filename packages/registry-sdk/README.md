@@ -19,6 +19,7 @@ Automatically create a component registry within a Next.js application using you
       components: [
          {
             name: "footer",
+            title: "Footer",
             description: "A footer containing base links and social media links.",
    
             demo: {

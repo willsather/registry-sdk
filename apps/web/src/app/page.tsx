@@ -42,6 +42,7 @@ export const registry = buildRegistry({
     components: [
        {
           name: "footer",
+          title: "Footer",
           description: "A footer containing base links and social media links.",
     
           demo: {
@@ -86,7 +87,7 @@ export const { GET, generateStaticParams } = toNextJsRouteHandler(registry);
         >
           <CodeBlock
             title="/app/registry/[[...name]]/page.tsx"
-            code={`import { registry } from "@/lib/registry";
+            code={`import { registry } from "@/lib/registry"; // your Registry instance
 import { toNextJsPageHandler } from "registry-sdk/nextjs";
 
 const { page, generateStaticParams } = toNextJsPageHandler(registry);
