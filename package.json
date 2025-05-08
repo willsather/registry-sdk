@@ -10,7 +10,7 @@
     "lint:fix": "biome check --write",
     "changeset": "changeset",
     "version": "changeset version && pnpm install --no-frozen-lockfile && git add .",
-    "release": "pnpm build --filter=registry-sdk && changeset publish"
+    "publish": "pnpm build --filter=registry-sdk && changeset publish"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
