@@ -18,7 +18,7 @@
       "dependsOn": ["^start"]
     },
     "test": {
-      "dependsOn": ["@repo/vitest-config#build"]
+      "dependsOn": ["@registry-sdk/vitest-config#build"]
     }
   }
 }

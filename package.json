@@ -8,13 +8,14 @@
     "test": "turbo test",
     "lint": "biome check",
     "lint:fix": "biome check --write",
+    "changeset": "changeset",
     "version": "changeset version && pnpm install --no-frozen-lockfile && git add .",
     "release": "pnpm build && changeset publish"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
     "@changesets/cli": "^2.29.3",
-    "@repo/typescript-config": "workspace:*",
+    "@registry-sdk/typescript-config": "workspace:*",
     "@types/jest": "^29.5.12",
     "@types/node": "^20.10.6",
     "turbo": "^2.5.0"

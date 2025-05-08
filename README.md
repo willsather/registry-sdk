@@ -87,8 +87,8 @@ In this example, there is a shared package called `registry-sdk` which contains 
 Located under `/packages/config` is all the shared configuration which the Turborepo uses. This is a great space to put
 handy developer tools and code cleanliness configuration.
 
-- `@repo/vitest-config`: `vitest` configurations for `base` and `ui` configurations
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+- `@registry-sdk/vitest-config`: `vitest` configurations for `base` and `ui` configurations
+- `@registry-sdk/typescript-config`: `tsconfig.json`s used throughout the monorepo
 
 ## Useful Turborepo Links
 

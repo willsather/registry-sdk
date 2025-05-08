@@ -14,7 +14,7 @@ importers:
       '@changesets/cli':
         specifier: ^2.29.3
         version: 2.29.3
-      '@repo/typescript-config':
+      '@registry-sdk/typescript-config':
         specifier: workspace:*
         version: link:packages/config/typescript
       '@types/jest':
@@ -60,7 +60,7 @@ importers:
         specifier: ^3.2.0
         version: 3.2.0
     devDependencies:
-      '@repo/typescript-config':
+      '@registry-sdk/typescript-config':
         specifier: workspace:*
         version: link:../../packages/config/typescript
       '@tailwindcss/postcss':
@@ -99,7 +99,7 @@ importers:
 
   packages/config/vitest:
     devDependencies:
-      '@repo/typescript-config':
+      '@registry-sdk/typescript-config':
         specifier: workspace:*
         version: link:../typescript
       '@vitest/coverage-istanbul':

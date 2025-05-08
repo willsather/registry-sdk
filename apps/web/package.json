@@ -1,5 +1,5 @@
 {
-  "name": "@registry-sdk/demo",
+  "name": "@registry-sdk/web",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -20,7 +20,7 @@
     "tailwind-merge": "^3.2.0"
   },
   "devDependencies": {
-    "@repo/typescript-config": "workspace:*",
+    "@registry-sdk/typescript-config": "workspace:*",
     "@tailwindcss/postcss": "^4.1.4",
     "@types/node": "^22.10.4",
     "@types/react": "^19.0.0",
