@@ -63,10 +63,8 @@ The goal is to create an SDK that helps automate creating a component registry w
 5. Navigate to `/registry` to view your component registry with individual component previews each with `Open in v0`
    buttons.
 
-   > [!NOTE]  
-   > The `registry-sdk` exposes routes and pages under `/registry/*`, with the
-   > [`registry-item.json`](https://ui.shadcn.com/docs/registry/registry-item-json) files located at
-   > `/registry/r/${name}.json`.
+> [!NOTE]  
+> The `registry-sdk` exposes routes and pages under `/registry/*`, with the [`registry-item.json`](https://ui.shadcn.com/docs/registry/registry-item-json) files located at `/registry/r/${name}.json`.
 
 ## Local Development
 
