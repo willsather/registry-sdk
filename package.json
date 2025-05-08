@@ -1,6 +1,7 @@
 {
   "name": "@registry-sdk/root",
   "version": "0.0.0",
+  "private": true,
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
