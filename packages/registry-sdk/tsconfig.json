@@ -12,7 +12,8 @@
     "moduleResolution": "Bundler",
     "tsBuildInfoFile": ".tsbuildinfo",
     "types": ["node"],
-    "verbatimModuleSyntax": true
+    "verbatimModuleSyntax": true,
+    "jsx": "react"
   },
   "exclude": ["**/dist", "node_modules"],
   "references": [],

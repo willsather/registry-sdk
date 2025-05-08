@@ -8,11 +8,16 @@
     "start": "next start"
   },
   "dependencies": {
-    "registry-sdk": "workspace:*",
+    "@radix-ui/react-slot": "^1.2.2",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "lucide-react": "^0.487.0",
     "next": "^15.3.1",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "react-syntax-highlighter": "^15.6.1",
+    "registry-sdk": "workspace:*",
+    "tailwind-merge": "^3.2.0"
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
@@ -20,8 +25,10 @@
     "@types/node": "^22.10.4",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "@types/react-syntax-highlighter": "^15.5.13",
     "postcss": "^8.5.3",
     "tailwindcss": "^4.1.4",
+    "tw-animate-css": "^1.2.9",
     "typescript": "5.4.5"
   },
   "packageManager": "pnpm@9.0.0",

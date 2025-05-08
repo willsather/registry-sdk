@@ -1,3 +1,4 @@
+import { Footer } from "@/components/footer";
 import { buildRegistry } from "registry-sdk";
 
 export const registry = buildRegistry({
@@ -7,6 +8,11 @@ export const registry = buildRegistry({
       name: "footer",
       title: "Footer",
       description: "A footer containing base links and social media links.",
+
+      demo: {
+        default: <Footer />,
+      },
+
       registryDependencies: ["button"],
       files: [
         {

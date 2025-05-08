@@ -1,20 +1,17 @@
 import { notFound } from "next/navigation";
-import { type NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
 import type { Registry } from "../registry";
+import type { NextjsRoute } from "./types";
 
-export type NextjsRoute = (
-  req: NextRequest,
-) => Promise<NextResponse> | NextResponse;
-
-export function toNextJsHandler(registry: Registry) {
+export function toNextJsRouteHandler(registry: Registry) {
   const GET: NextjsRoute = async (req) => {
     const url = req.nextUrl;
     const path = url.pathname.replace(/^\/+|\/+$/g, ""); // remove leading/trailing slashes
 
-    const [root, file] = path.split("/");
+    const [base, r, file] = path.split("/");
 
-    if (root === "r" && file?.endsWith(".json")) {
+    if (base === "registry" && r === "r" && file?.endsWith(".json")) {
       try {
         const name = file.replace(/\.json$/, "");
 

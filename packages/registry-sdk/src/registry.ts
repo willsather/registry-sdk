@@ -23,7 +23,6 @@ export interface RegistryComponent {
   description?: string;
   author?: string;
 
-  // TODO: add page with component preview
   demo?: Record<string, ReactNode>;
 
   dependencies?: string[];
