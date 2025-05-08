@@ -6,6 +6,8 @@
     "url": "https://github.com/willsather/registry-sdk",
     "directory": "packages/registry-sdk"
   },
+  "homepage": "https://registry-sdk.vercel.app",
+  "license": "MIT",
   "keywords": [
     "component",
     "registry",
