@@ -1,6 +1,7 @@
 {
   "name": "@repo/vitest-config",
   "private": true,
+  "version": "0.0.0",
   "type": "module",
   "exports": {
     "./base": "./dist/configs/base-config.js",
