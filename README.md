@@ -63,7 +63,6 @@ To start using, you can use the following commands:
 pnpm install
 pnpm dev
 pnpm build
-
 ```
 
 This project also has some configured some tools like:
