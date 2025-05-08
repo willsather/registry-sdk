@@ -2,7 +2,7 @@
 
 The goal is to create an SDK that helps automate creating a component registry within a Next.js application.
 
-## Vision
+## Getting Started
 
 1. Install
    ```shell 
@@ -39,7 +39,7 @@ The goal is to create an SDK that helps automate creating a component registry w
    });
    ```
 
-3. Mount Handler at `/app/api/registry/[...name]/route.ts`
+3. Mount Route Handler at `/app/api/registry/r/[...name]/route.ts`
 
    ```ts
    import { registry } from "@/lib/registry"; // path to your registry config file
@@ -48,14 +48,27 @@ The goal is to create an SDK that helps automate creating a component registry w
    export const { GET, generateStaticParams } = toNextJsHandler(registry);
    ```
 
-4. API Endpoints / Pages exposed automatically
+4. (Optional) Mount Page Handler at `/app/api/registry/[[...name]]/page.tsx`
 
-    * `GET /registry` => home page
-    * `GET /registry/component/${name}` => component specific page
-    * `GET /registry/r/${name}.json` => json file containing component name, description, and content
+   ```tsx
+   import { registry } from "@/lib/registry"; // path to your registry config file
+   import { toNextJsPageHandler } from "registry-sdk/nextjs";
+   
+   const { page, generateStaticParams } = toNextJsPageHandler(registry);
+   
+   export default page;
+   export { generateStaticParams };
+   ```
 
-    
-## Getting Started
+5. Navigate to `/registry` to view your component registry with individual component previews each with `Open in v0`
+   buttons.
+
+   > [!NOTE]  
+   > The `registry-sdk` exposes routes and pages under `/registry/*`, with the
+   > [`registry-item.json`](https://ui.shadcn.com/docs/registry/registry-item-json) files located at
+   > `/registry/r/${name}.json`.
+
+## Local Development
 
 To start using, you can use the following commands:
 
@@ -71,17 +84,17 @@ This project also has some configured some tools like:
 - [Vitest](https://vitest.dev/) for unit testing
 - [Biome](https://biomejs.dev/) for code linting & formatting
 
-## Applications
+### Applications
 
 Located under `/apps`, you will find an application.
 
 - `web`: a simple [Next.js](https://nextjs.org/) app to host main site and use as a demo
 
-## Packages
+### Packages
 
-In this example, there is a shared package called `registry-sdk` which contains the primary SDK. 
+In this example, there is a shared package called `registry-sdk` which contains the primary SDK.
 
-## Shared Configuration
+### Shared Configuration
 
 Located under `/packages/config` is all the shared configuration which the Turborepo uses. This is a great space to put
 handy developer tools and code cleanliness configuration.
@@ -89,7 +102,7 @@ handy developer tools and code cleanliness configuration.
 - `@registry-sdk/vitest-config`: `vitest` configurations for `base` and `ui` configurations
 - `@registry-sdk/typescript-config`: `tsconfig.json`s used throughout the monorepo
 
-## Useful Turborepo Links
+### Useful Turborepo Links
 
 - [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
 - [Caching](https://turbo.build/repo/docs/core-concepts/caching)
