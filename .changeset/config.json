@@ -9,6 +9,7 @@
   "updateInternalDependencies": "patch",
   "ignore": [
     "@registry-sdk/web",
+    "@registry-sdk/with-nextjs",
     "@registry-sdk/typescript-config",
     "@registry-sdk/vitest-config"
   ]

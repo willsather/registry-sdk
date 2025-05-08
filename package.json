@@ -3,11 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "build": "turbo build",
-    "dev": "turbo dev",
+    "dev": "turbo dev --filter @registry-sdk/web...",
     "start": "turbo start",
     "test": "turbo test",
     "lint": "biome check",
     "lint:fix": "biome check --write",
+    "with-nextjs": "pnpm dev --filter @registry-sdk/with-nextjs",
     "changeset": "changeset",
     "release": "turbo build && changeset publish",
     "version-packages": "changeset version && pnpm i --no-frozen-lockfile && git add ."
