@@ -43,9 +43,9 @@ Automatically create a component registry within a Next.js application using you
 
    ```ts
    import { registry } from "@/lib/registry"; // path to your registry config file
-   import { toNextJsHandler } from "registry-sdk/next-js";
+   import { toNextJsRouteHandler } from "registry-sdk/nextjs";
    
-   export const { GET, generateStaticParams } = toNextJsHandler(registry);
+   export const { GET, generateStaticParams } = toNextJsRouteHandler(registry);
    ```
 
 4. (Optional) Mount Page Handler at `/app/api/registry/[[...name]]/page.tsx`
