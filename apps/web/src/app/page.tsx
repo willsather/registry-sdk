@@ -72,7 +72,7 @@ export const registry = buildRegistry({
         >
           <CodeBlock
             title="/app/registry/r/[...name]/route.ts"
-            code={`import { registry } from "@/lib/registry"; // your Registry instance
+            code={`import { registry } from "@/lib/registry"; // your registry instance
 import { toNextJsRouteHandler } from "registry-sdk/nextjs";
 
 export const { GET, generateStaticParams } = toNextJsRouteHandler(registry);
@@ -87,13 +87,11 @@ export const { GET, generateStaticParams } = toNextJsRouteHandler(registry);
         >
           <CodeBlock
             title="/app/registry/[[...name]]/page.tsx"
-            code={`import { registry } from "@/lib/registry"; // your Registry instance
+            code={`import { registry } from "@/lib/registry"; // your registry instance
 import { toNextJsPageHandler } from "registry-sdk/nextjs";
 
 const { page, generateStaticParams } = toNextJsPageHandler(registry);
-
-export default page;
-export { generateStaticParams };`}
+export { page as default, generateStaticParams };`}
           />
         </Step>
       </div>

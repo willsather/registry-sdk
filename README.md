@@ -56,9 +56,7 @@ The goal is to create an SDK that helps automate creating a component registry w
    import { toNextJsPageHandler } from "registry-sdk/nextjs";
    
    const { page, generateStaticParams } = toNextJsPageHandler(registry);
-   
-   export default page;
-   export { generateStaticParams };
+   export { page as default, generateStaticParams };
    ```
 
 5. Navigate to `/registry` to view your component registry with individual component previews each with `Open in v0`
