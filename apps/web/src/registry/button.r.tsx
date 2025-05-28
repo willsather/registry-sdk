@@ -1,10 +1,10 @@
 import { Button } from "@/components/ui/button";
-// import type { RegistryMetadata } from "registry-sdk";
+import type { RegistryMetadata } from "registry-sdk";
 
 export const component = {
   title: "Button",
   description: "This is a button primitive",
-}; //satisfies RegistryMetadata;
+} satisfies RegistryMetadata;
 
 export const Primary = <Button>Primary</Button>;
 export const Secondary = <Button variant="secondary">Secondary</Button>;

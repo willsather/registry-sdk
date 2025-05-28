@@ -6,6 +6,7 @@
       "node_modules",
       "dist",
       "playwright-report",
+      "registry-build",
       "package.json",
       ".next",
       ".vercel",

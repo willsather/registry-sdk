@@ -2,6 +2,7 @@ import chalk from "chalk";
 import ora from "ora";
 import { createServer, searchForWorkspaceRoot } from "vite";
 
+import { loadConfig } from "./config";
 import { logger } from "./utils/logger";
 import { getAppRoot } from "./utils/vite";
 
@@ -14,6 +15,8 @@ export default async function preview() {
   });
 
   spinner.start();
+
+  const config = await loadConfig();
 
   const vite = await createServer({
     mode: "development",
