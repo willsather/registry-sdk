@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "registry:dev": "registry-sdk dev",
+    "registry:build": "registry-sdk build"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.2",

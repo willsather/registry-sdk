@@ -4,12 +4,14 @@
     "allowJs": true,
     "composite": false,
     "downlevelIteration": true,
+    "esModuleInterop": true,
     "incremental": true,
     "noEmit": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitOverride": true,
-    "module": "Preserve",
-    "moduleResolution": "Bundler",
+    "module": "ESNext",
+    "target": "ESNext",
+    "moduleResolution": "Node",
     "tsBuildInfoFile": ".tsbuildinfo",
     "types": ["node"],
     "verbatimModuleSyntax": true,
@@ -17,5 +19,5 @@
   },
   "exclude": ["**/dist", "node_modules"],
   "references": [],
-  "include": ["src"]
+  "include": ["src", "**/*.ts"]
 }

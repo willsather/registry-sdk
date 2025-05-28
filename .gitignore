@@ -39,3 +39,6 @@ yarn-error.log*
 
 coverage.json
 .idea
+
+# registry output
+registry-build

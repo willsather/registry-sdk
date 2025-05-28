@@ -7,6 +7,16 @@
     "directory": "packages/registry-sdk"
   },
   "homepage": "https://registry-sdk.vercel.app",
+  "bin": {
+    "registry-sdk": "./dist/cli/index.js"
+  },
+  "files": [
+    "dist",
+    "src/app",
+    "README.md",
+    "CHANGELOG.md",
+    "package.json"
+  ],
   "license": "MIT",
   "keywords": [
     "component",
@@ -16,42 +26,38 @@
     "typescript",
     "nextjs"
   ],
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
+  "type": "module",
+  "types": "./dist/index.js",
   "exports": {
     ".": {
       "import": {
         "types": "./dist/index.d.ts",
-        "default": "./dist/index.mjs"
-      },
-      "require": {
-        "types": "./dist/index.d.cts",
-        "default": "./dist/index.cjs"
-      }
-    },
-    "./nextjs": {
-      "import": {
-        "types": "./dist/nextjs/index.d.ts",
-        "default": "./dist/nextjs/index.mjs"
-      },
-      "require": {
-        "types": "./dist/nextjs/index.d.cts",
-        "default": "./dist/nextjs/index.cjs"
+        "default": "./dist/index.js"
       }
     }
   },
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
+    "test": "node dist/cli/index.js",
+    "test:dev": "node dist/cli/index.js dev",
+    "test:build": "node dist/cli/index.js build",
+    "test:preview": "node dist/cli/index.js preview",
     "lint": "biome check",
-    "lint:fix": "biome check --write",
-    "link:sdk": "cd dist && pnpm link --global",
-    "unlink:sdk": "cd dist && pnpm unlink --global"
+    "lint:fix": "biome check --write"
   },
   "dependencies": {
+    "@tailwindcss/vite": "^4.1.7",
+    "@vitejs/plugin-react": "^4.5.0",
+    "chalk": "^5.4.1",
+    "commander": "^14.0.0",
+    "fast-glob": "^3.3.3",
     "next": "^15.2.3",
+    "ora": "^8.2.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "tailwindcss": "^4.1.7",
+    "vite": "^6.3.5"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
@@ -64,8 +70,5 @@
   "packageManager": "pnpm@9.15.2",
   "engines": {
     "node": ">=22"
-  },
-  "files": [
-    "dist"
-  ]
+  }
 }

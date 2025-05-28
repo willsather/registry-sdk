@@ -1,20 +1,4 @@
-import fs from "node:fs";
-import path from "node:path";
 import type { ReactNode } from "react";
-
-import { resolveFileType, toTitleCase } from "./utils";
-
-export interface RegistryConfig {
-  baseURL: string;
-  components: RegistryComponent[];
-}
-
-export interface Registry {
-  config: RegistryConfig;
-  getComponent: (name: string) => RegistryComponent;
-  getComponents: () => RegistryComponent[];
-  getRegistryItem: (name: string) => RegistryItem | null;
-}
 
 export interface RegistryComponent {
   name: string;
@@ -63,62 +47,4 @@ export interface RegistryItem {
     content?: string;
     target?: string;
   }[];
-}
-
-export function buildRegistry(config: RegistryConfig): Registry {
-  const componentMap = new Map<string, RegistryComponent>(
-    config.components.map((c) => [c.name.toLowerCase(), c]),
-  );
-
-  function getComponents(): RegistryComponent[] {
-    return config.components;
-  }
-
-  function getComponent(name: string): RegistryComponent {
-    const component = config.components.find((rc) => rc.name === name);
-
-    if (component == null) {
-      throw new Error(`Component ${name} not found`);
-    }
-
-    return component;
-  }
-
-  function getRegistryItem(name: string): RegistryItem | null {
-    const component = componentMap.get(name.toLowerCase());
-    if (!component) return null;
-
-    return {
-      $schema: "https://ui.shadcn.com/schema/registry-item.json",
-      name: component.name,
-      type: "registry:component",
-      title: toTitleCase(component.name),
-      description: component.description,
-      files: component.files.map((file) => {
-        const contentPath = path.resolve(process.cwd(), file.path);
-
-        let content = "";
-        try {
-          content = fs.readFileSync(contentPath, "utf-8");
-        } catch (err) {
-          console.error(`Failed to read file: ${contentPath}`, err);
-          throw new Error(`Failed to read file: ${contentPath}`);
-        }
-
-        return {
-          path: file.path,
-          type: resolveFileType(file.path),
-          target: file.target,
-          content,
-        };
-      }),
-    };
-  }
-
-  return {
-    config,
-    getComponent,
-    getComponents,
-    getRegistryItem,
-  };
 }

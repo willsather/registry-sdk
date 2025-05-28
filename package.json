@@ -15,10 +15,10 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
-    "@changesets/cli": "^2.29.3",
+    "@changesets/cli": "^2.29.4",
     "@registry-sdk/typescript-config": "workspace:*",
-    "@types/node": "^20.10.6",
-    "turbo": "^2.5.0"
+    "@types/node": "^20.17.51",
+    "turbo": "^2.5.3"
   },
   "packageManager": "pnpm@10.7.0",
   "engines": {
