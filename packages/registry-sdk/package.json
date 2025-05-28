@@ -47,6 +47,7 @@
     "lint:fix": "biome check --write"
   },
   "dependencies": {
+    "@tailwindcss/postcss": "^4.1.7",
     "@tailwindcss/vite": "^4.1.7",
     "@vitejs/plugin-react": "^4.5.0",
     "chalk": "^5.4.1",
@@ -54,6 +55,7 @@
     "fast-glob": "^3.3.3",
     "next": "^15.2.3",
     "ora": "^8.2.0",
+    "postcss": "^8.5.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "tailwindcss": "^4.1.7",
