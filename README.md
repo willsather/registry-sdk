@@ -1,69 +1,54 @@
 # Registry SDK
 
-The goal is to create an SDK that helps automate creating a component registry within a Next.js application.
+The goal is to create an SDK that helps automate creating a `shadcn/ui` [Registry](https://ui.shadcn.com/docs/registry).
+
+## Vision
+
+* simplify and automate the creation of `registry.json`
+* expose standardized user interface with AI native features (open in v0, mcp, etc)
 
 ## Getting Started
 
 1. Install
    ```shell 
-    npm i registry-sdk
+    pnpm i registry-sdk
    ```
 
-2. Create `@/lib/registry.tsx` configuration file
-
-   ```tsx
-   import { buildRegistry } from "registry-sdk"
-   
-   export const registry = buildRegistry({
-      baseURL: "http://localhost:3000",
-      components: [
-         {
-            name: "footer",
-            title: "Footer",
-            description: "A footer containing base links and social media links.",
-   
-            demo: {
-               default: <Footer/>
-            },
-   
-            dependencies: ["button"],
-            registryDependencies: ["button"],
-   
-            files: [
-               {
-                  path: "src/components/footer.tsx",
-                  target: "@/components/footer.tsx",
-               }
-            ]
-         },
-      ],
-   });
-   ```
-
-3. Mount Route Handler at `/app/api/registry/r/[...name]/route.ts`
+2. Create `.registry/config.ts` configuration file
 
    ```ts
-   import { registry } from "@/lib/registry"; // path to your registry config file
-   import { toNextJsRouteHandler } from "registry-sdk/nextjs";
+   import type { RegistryConfig } from "registry-sdk";
+
+   const config: RegistryConfig = {
+   components: ["src/registry/**/*.r.@(js|jsx|ts|tsx)"],
+   };
    
-   export const { GET, generateStaticParams } = toNextJsRouteHandler(registry);
+   export default config;
    ```
 
-4. (Optional) Mount Page Handler at `/app/api/registry/[[...name]]/page.tsx`
+3. Create registry demos in `@/registry/*.r.ts`:
 
-   ```tsx
-   import { registry } from "@/lib/registry"; // path to your registry config file
-   import { toNextJsPageHandler } from "registry-sdk/nextjs";
+   ```ts
+   import type { RegistryComponent, RegistryDemo } from "registry-sdk";
    
-   const { page, generateStaticParams } = toNextJsPageHandler(registry);
-   export { page as default, generateStaticParams };
+   import { Footer } from "@/components/footer";
+   
+   export const component = {
+    title: "Footer",
+    description: "A footer containing base links and social media links.",
+    component: Footer,
+   } satisfies RegistryComponent<typeof Footer>;
+   
+   export default component;
+   type Demo = RegistryDemo<typeof component>;
+   
+   export const Default: Demo = {
+    props: {},
+   };
    ```
-
-5. Navigate to `/registry` to view your component registry with individual component previews each with `Open in v0`
-   buttons.
-
-> [!NOTE]  
-> The `registry-sdk` exposes routes and pages under `/registry/*`, with the [`registry-item.json`](https://ui.shadcn.com/docs/registry/registry-item-json) files located at `/registry/r/${name}.json`.
+   
+4. Run `pnpm registry-sdk dev` to start the Registry UI and expose the [
+   `registry-item.json`](https://ui.shadcn.com/docs/registry/registry-item-json) files.
 
 ## Local Development
 
