@@ -11,7 +11,7 @@
     "noImplicitOverride": true,
     "module": "ESNext",
     "target": "ESNext",
-    "moduleResolution": "Node",
+    "moduleResolution": "bundler",
     "tsBuildInfoFile": ".tsbuildinfo",
     "types": ["node"],
     "verbatimModuleSyntax": true,

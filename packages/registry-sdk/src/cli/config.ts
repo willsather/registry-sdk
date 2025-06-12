@@ -4,14 +4,15 @@ import { globby } from "globby";
 
 import type { RegistryConfig } from "../types";
 
-export async function loadConfig(): Promise<{ files: string[] }> {
+export async function loadConfig(): Promise<RegistryConfig> {
   const configPath = path.resolve(process.cwd(), ".registry/config.ts");
   const configUrl = pathToFileURL(configPath).href;
 
   const configModule = await import(configUrl);
-  const config: RegistryConfig = configModule.default;
 
-  const files = await globby(config.components);
+  return configModule.default;
+}
 
-  return { files };
+export async function findFiles(pattern: string[]): Promise<string[]> {
+  return await globby(pattern);
 }
