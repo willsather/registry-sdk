@@ -7,7 +7,7 @@ import { logger } from "./utils/logger";
 import { getAppRoot } from "./utils/vite";
 
 export default async function build() {
-  logger.info(`Executing ${chalk.bold("example")} command`);
+  logger.info(`Executing ${chalk.bold("build")} command\n`);
 
   const spinner = ora({
     text: "Loading...",
@@ -20,6 +20,11 @@ export default async function build() {
     root: getAppRoot(),
     build: {
       outDir: path.resolve(process.cwd(), "registry-build"),
+    },
+    resolve: {
+      alias: {
+        "@": path.join(process.cwd(), "src"),
+      },
     },
   });
 
